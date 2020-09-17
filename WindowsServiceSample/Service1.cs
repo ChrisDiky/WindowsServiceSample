@@ -28,7 +28,7 @@ namespace WindowsServiceSample
         /// </summary>
         protected override void OnStart(string[] args)
         {
-            File.AppendAllText(_FilePath, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " => 服務開始...");
+            File.AppendAllText(_FilePath, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " => 服務開始...\n");
 
             var myTimer = new Timer();
             myTimer.Elapsed += new ElapsedEventHandler(TimerEvent);
@@ -43,7 +43,7 @@ namespace WindowsServiceSample
         public void TimerEvent(object sender, ElapsedEventArgs e)
         {
             //寫入現在時間測試服務結果
-            File.AppendAllText(_FilePath, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));            
+            File.AppendAllText(_FilePath, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n");            
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace WindowsServiceSample
         /// </summary>
         protected override void OnStop()
         {
-            File.AppendAllText(_FilePath, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " => 服務結束...");     
+            File.AppendAllText(_FilePath, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " => 服務結束...\n");     
         }
     }
 }
